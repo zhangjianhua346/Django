@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table width="600px" border="1" cellspacing="0">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>头像</th>
+            <th>操作</th>
+        </tr>
+        {% for pto in all_photos %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ pto.sname }}</td>
+{#                <td><img src="/media/{{pto.photo}}"></td>#}
+                <td><img style="width: 200px;" src="{{ MEDIA_URL }}{{ pto.photo }}"></td>
+                <td><a href="/file/photo_download/?photo={{ pto.photo }}">下载</a></td>
+             </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

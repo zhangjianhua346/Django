@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <table border="1" cellspacing="0" width="500px">
+            <tr>
+                <th>编号</th>
+                <th>班级名称</th>
+                <th>操作</th>
+            </tr>
+            {% for c in cls %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ c.cname }}</td>
+                    <td>
+                        <a href="/pro_student/pro_register/getstu/detail/?cno={{ c.c_no }}">详情</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>

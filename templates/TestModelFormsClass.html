@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .error-msg{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+{# 表单类没有提供 form标签和submit按钮#}
+    <form action="/forms/test_models_forms_class/" method="post">
+        {% csrf_token %}
+{#        {{ cls_form.as_p }}{# as_p--p标签 自动换行，引用views中返回的forms对象#}
+        <p>
+            <label for="{{ cls_form.cname.id_for_label }}">{{ cls_form.cname.label }}:</label>{{ cls_form.cname }}{# cls_form.cname.label获取的是模型类verbose的值 #}
+        </p>
+        <p>
+            <label for="{{ stu_form.sname.id_for_label }}">{{ stu_form.sname.label }}:</label>{{ stu_form.sname }}
+        </p>
+        <p>
+            <label for="{{ stu_form.pwd.id_for_label }}">{{ stu_form.pwd.label }}:</label>{{ stu_form.pwd }}
+        </p>
+        <p>
+            <label for="{{ stu_form.confirm_pwd.id_for_label }}">{{ stu_form.confirm_pwd.label }}:</label>{{ stu_form.confirm_pwd }}<span class="error-msg">{{ stu_form.errors.confirm_pwd.0 }}</span>
+        </p>
+
+        <input type="submit" value="注册">
+    </form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>{% include 'base_header.html' %}</div>
+    <div>
+        {% block main %} {#    main是名称#}
+        {% endblock main %}
+    </div>
+    <div>底部</div>
+</body>
+</html>

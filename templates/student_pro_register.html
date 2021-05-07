@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <form action="/pro_student/pro_register/" method="post">
+            {% csrf_token %}
+            <p>
+                <label for="sn">姓名：</label><input name="sname" id="sn">
+            </p>
+             <p>
+                <label for="sc">班级：</label><input name="cname" id="sc">
+                 <select name="clsname" id="sc">
+                     <option value="B201python">B201python</option>
+                     <option value="B202java">B202java</option>
+                 </select>
+            </p>
+            <p>
+                <label for="cour">选课：</label>
+                <input type="checkbox" name="coursename" value="python">python &emsp;
+                <input type="checkbox" name="coursename" value="java">java &emsp;
+            </p>
+            <p>
+                <input type="submit" value="注册"/>
+            </p>
+
+        </form>
+</body>
+</html>

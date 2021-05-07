@@ -1,0 +1,40 @@
+{% extends 'blog_base.html' %}
+{% load customfilter %}
+
+{% block title %}
+    博客详情
+{% endblock %}
+
+{% block left %}
+    <div id="main">
+
+        <article class="article article-type-post">
+
+        <div class="article-meta">
+            <a class="article-date">
+                <time>{{ contentDetail.creat_time|date:'Y-m-d H:i:s' }}</time>
+            </a>
+            <div class="article-category">
+                <a class="article-category-link" href="#" target="_blank">{{ contentDetail.category.cname }}</a>
+            </div>
+        </div>
+
+        <div class="article-inner">
+            <header class="article-header">
+                <h1 itemprop="name">
+                    <a class="article-title"  target="_blank">{{ contentDetail.title }}</a>
+                </h1>
+            </header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <h2>{{ contentDetail.desc }}</h2>
+                <br>
+                {{ contentDetail.content|makedown|safe }}
+            </div>
+
+        </div>
+
+        </article>
+
+    </div>
+{% endblock %}

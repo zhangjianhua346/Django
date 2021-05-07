@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.redSpan{
+				color: red;
+			}
+			.greenSpan{
+				color: green;
+			}
+
+		</style>
+		<script>
+			function $(id){
+				return document.getElementById(id);
+			}
+
+			function loadCode(){
+
+				//随机生成四位数字
+				var num = parseInt(Math.random()*9000+1000);
+
+				$('cSpan').innerHTML = num;
+
+
+			}
+
+			function checkUname(){
+				//获取文本框的内容
+				var uname = $('uname').value;
+
+				//设置校验规则
+				var reg = /^\w{3,8}$/gi;
+
+				//判断
+				if(uname.length==0){
+					$('unameSpan').innerHTML = "*";
+					$('unameSpan').className = "redSpan";
+					return false;
+				}else if(reg.test(uname)){
+					$('unameSpan').innerHTML = "√";
+					$('unameSpan').className = "greenSpan";
+					return true;
+				}else{
+					$('unameSpan').innerHTML = "×";
+					$('unameSpan').className = "redSpan";
+					return false;
+				}
+
+
+			}
+
+		function checkAll(){
+			return checkUname();
+		}
+
+		</script>
+	</head>
+	<body onload="loadCode()">
+		<form action="" method="get" onsubmit="return checkAll();" onreset="return confirm('您确定要重置表单吗？')">
+
+			<p>用户名：<input type="text" id="uname" name="uname" onblur="checkUname()" /><span id="unameSpan"></span></p>
+			<p>密码：<input type="password" id="pwd" name="pwd"/><span id="pwdSpan"></span></p>
+			<p>
+				验证码：<input type="text" id="code" size=4/><span id="cSpan"></span><span id="codeSpan"></span>
+			</p>
+			<p><input type="submit" value="注册"/>&emsp;<input type="reset" value="重置"/></p>
+		</form>
+	</body>
+</html>

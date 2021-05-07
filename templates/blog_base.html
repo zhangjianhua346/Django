@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="/static/blog_style.css">{# 不能写成/static/css/blog_style.css --用settings中配置的静态文件存放路径 #}
+        <style>
+            form {
+              position: relative;
+              width: 150px;
+              margin: 0 auto;
+            }
+            .d1{
+                float: right;
+                line-height: 67px;
+            }
+            .d1 input {
+              width: 100px;
+              height: 30px;
+              border: 2px solid darkred;
+              border-radius: 5px;
+              outline: none;
+              background: white;
+              color: #1e242a;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="wrap">
+                {% include 'blog_header.html' %}
+                <div class="outer">
+                    {% block left %}
+                    {% endblock %}
+                    {% include 'blog_right.html' %}
+                </div>
+                <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                {% include 'blog_footer.html' %}
+            </div>
+
+
+        </div>
+    </body>
+</html>

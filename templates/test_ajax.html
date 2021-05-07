@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>
+        function getAjax(){
+            //发送ajax的get请求
+            $.get('/AJAX/get_ajax_data/','uname=zhangsan&pwd=123',function(result){
+                alert(result.flag){# function(result)回调函数、result福服务器响应回来的数据都是给到这个result #}
+            })
+        }
+
+
+
+        function postAjax(){
+            //发送ajax的post请求
+            //获取隐藏域中的csrftoken的值# post请求必须要带csrf_token
+            var token = $('input[name="csrfmiddlewaretoken"]').val() //属性选择器
+            $.post('/AJAX/post_ajax_data/','uname=zhangsan&pwd=123&csrfmiddlewaretoken='+token,function(result){
+                alert(result.flag)
+            })
+        }
+
+        function customAjax() {//自定义ajax请求
+            $.ajax({
+                async:false,//同步请求
+                url:'/AJAX/get_ajax_data/',
+                type:'GET',
+                data:{'uname':'lisi'},
+                success:function(result){
+                    alert(result.flag)
+                }
+            })
+            alert('getajax...')
+        }
+    </script>
+</head>
+<body>
+    {% csrf_token %}
+    <input type="button" value="get请求" onclick="getAjax()"/>
+    <input type="button" value="post请求" onclick="postAjax()"/>
+    <input type="button" value="自定义AJAX请求" onclick="customAjax()"/>
+</body>
+</html>

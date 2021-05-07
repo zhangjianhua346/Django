@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+{#    <script>#}
+{#        function test() {#}
+{#            window.location.href="/project_test01/login/?uname=zhangsan&pwd=123";#}
+{#        }#}
+{#    </script>#}
+</head>
+<body>
+{#      <input type="button" onclick="test()" value="显示登录页get">#}
+{#      <a href="/project_test01/login/?uname=zhangsan&pwd=123">显示登录页</a>#}
+
+      <form  action="/project_test01/login/submit/" method="post"> {#      只有表单提交才会运行这行#}
+          {% csrf_token %}
+          <p>
+              <label>用户名：</label><input type="text" name="uname"/>
+          </p>
+          <p>
+              <label>密&emsp;码：</label><input type="password" name="pwd"/>
+          </p>
+          <p>
+              &emsp;&emsp;&emsp;<input type="submit" value="登录"/>
+          </p>
+      </form>
+      <form  action="/project_test01/register_index/" method="post">
+          {% csrf_token %}
+           <p>
+              &emsp;&emsp;&emsp;<input type="submit" value="注册"/>
+          </p>
+      </form>
+</body>
+</html>

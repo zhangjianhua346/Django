@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1" cellspacing="0" width="500px">
+        {% for user_data in all_user_data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ user_data.name }}</td>
+                <td>{{ user_data.sname }}</td>
+                <td>{{ user_data.spwd }}</td>
+           </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,64 @@
+ <aside id="sidebar">
+     <!--分类-->
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list">
+
+          {% for categoryObj in categoryContext %}
+            <li class="category-list-item">
+                  <a class="category-list-link" href="/blog/category/{{ categoryObj.category }}/">{{ categoryObj.category__cname }}</a>
+                  <span class="category-list-count">{{ categoryObj.c }}</span>
+            </li>
+          {% endfor %}
+
+      </ul>
+      </div>
+  </div>
+
+     <!--归档-->
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list">
+
+          {% for archiveInfo in archiveInfoContext %}
+            <li class="archive-list-item">
+                  <a class="archive-list-link" href="/blog/archive/{{ archiveInfo.1|date:'Y' }}/{{ archiveInfo.1|date:'m' }}/{{ archiveInfo.1|date:'d' }}/">{{ archiveInfo.1 }}</a>
+                  <span class="archive-list-count">{{ archiveInfo.0 }}</span>
+                </li>
+          {% endfor %}
+
+      </ul>
+    </div>
+  </div>
+
+    <!--近期文章-->
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+
+          {% for recentBlogObj in recentBlogConext %}
+            <li>
+                <a href="/blog/content-detail/{{ recentBlogObj.id }}" target="_blank">{{ recentBlogObj.title|truncatechars:10 }}</a>
+            </li>
+          {% endfor %}
+
+      </ul>
+    </div>
+  </div>
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+          <li>
+            <a href="https://www.imooc.com/article/314264" target="_blank"> UI自动化神器</a>
+          </li>
+          <li>
+            <a href="https://www.cnblogs.com/TD1900/p/13175438.html" target="_blank">接口自动化HttpRunner</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</aside>

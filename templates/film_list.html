@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        /*解决页面浮动后的塌陷问题*/
+        .clearfix{
+            zoom:1;
+        }
+        .clearfix:after{
+            content: "";display: block;visibility: hidden;line-height: 0;clear: both;
+        }
+
+        body,div{
+            margin: 0 auto;
+        }
+
+        div{
+            border: 1px solid gray;
+            width: 750px;
+            text-align: center;
+        }
+
+        ul{
+            list-style-type: none;
+            display: inline-block;
+        }
+
+        #header li:hover{
+            cursor: pointer;
+            background: blue;
+            color: white;
+        }
+
+        #header li{
+            float: left;
+            margin-left: 10px;
+            font-family: '微软雅黑';
+            color: #666666;
+        }
+
+        #content h1{
+            font-size:14px;
+            margin: 0;
+        }
+
+        #content li{
+            float: left;
+            display: inline;
+            margin-right: 15px;
+            text-align: center;
+            height: 225px;
+            overflow: hidden;
+            padding-top: 10px;
+            padding-bottom: 5px;
+        }
+
+        #content ul{
+            /*去除ul的内外边距*/
+            margin: 0;
+            padding: 0;
+        }
+
+        .tip{
+            display: block;
+            font-size: 12px;
+        }
+
+        .h1,.tip{
+            width: 110px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+        <div id="header" class="clearfix">
+            <ul class="clearfix">
+                <li>首页</li>
+                <li>电影</li>
+                <li>电视剧</li>
+                <li>动漫</li>
+                <li>综艺</li>
+                <li>音乐</li>
+                <li>MV</li>
+                <li>视频</li>
+                <li>短片</li>
+                <li>公开课</li>
+            </ul>
+        </div>
+
+        <div id="content">
+            <ul class="clearfix">
+                {% for film in film_list %}
+                    <li>
+                    <a href="{{ film.mlink }}"><img src="{{ film.mimg }}"/></a>
+                    <h1 class="h1">{{ film.mname }}</h1>
+                    <span class="tip">{{ film.mdesc }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <a href="/film/?num={{ pre_page_num }}">上一页</a>
+            <a href="/film/?num={{ pre_page_num }}">上一页</a>
+        </div>
+</body>
+</html>

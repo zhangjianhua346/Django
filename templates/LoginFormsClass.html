@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{# 表单类没有提供 form标签和submit按钮#}
+    <form action="/forms/test_forms_class/" method="post">
+        {% csrf_token %}
+        {{ login_form.as_p }}{# as_p 自动换行，引用views中返回的forms对象#}
+        <input type="submit" value="登录">
+    </form>
+</body>
+</html>

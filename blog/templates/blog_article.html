@@ -1,0 +1,57 @@
+{% extends 'blog_base.html' %}
+{% load customfilter %}
+
+{% block title %}
+    博客列表
+{% endblock %}
+
+{% block left %}
+    <div id="main">
+
+        {% for category in categoryList %}
+            <article class="article article-type-post">
+
+            <div class="article-meta">
+                <a class="article-date">
+                    <time>{{ category.creat_time|date:'Y-m-d H:i:s' }}</time>
+                </a>
+                <div class="article-category">
+                    <a class="article-category-link" href="#" target="_blank">{{ category.category.cname }}</a>
+                </div>
+            </div>
+
+            <div class="article-inner">
+                <header class="article-header">
+                    <h1 itemprop="name">
+                        <a class="article-title" href="#" target="_blank">{{ category.tag.tname }}</a>
+                    </h1>
+                </header>
+
+                <div class="article-entry" itemprop="articleBody">
+                    <header class="article-header">
+                        <h2 itemprop="name">
+                            <a class="article-title"  target="_blank">{{ category.title }}</a>
+                        </h2>
+                    </header>
+                    <hr>
+                    {{ category.desc }}
+                    <p class="article-more-link">
+                        <a href="/blog/content-detail/{{ category.id }}" target="_blank">阅读全文</a>
+                    </p>
+                </div>
+
+                <footer class="article-footer">
+                    <a data-url="存放文章的url" class="article-share-link">分享</a>
+                    {% for t in category.tag.all %}
+                        <ul class="article-tag-list">
+                            <li class="article-tag-list-item">
+                                <a class="article-tag-list-link" href="#">{{ t.tname }}</a>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </footer>
+            </div>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}
